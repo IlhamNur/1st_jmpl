@@ -2,9 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
-  
 use App\Http\Controllers\Auth\RegisterController;
-use App\Http\Controllers\HomeController;
+use App\Http\Controllers\BukutamuCRUDController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,15 +19,17 @@ use App\Http\Controllers\HomeController;
 Route::get('/', function () {
     return view('welcome');
 });
-  
+
+Route::resource('bukutamus', BukutamuCRUDController::class);
+
 Auth::routes(['verify' => true]);
-   
+
 Route::middleware(['2fa'])->group(function () {
-   
-    Route::get('/home', [HomeController::class, 'index'])->name('home');
+
+    Route::get('/home', [BukutamuCRUDController::class, 'index'])->name('home');
     Route::post('/2fa', function () {
         return redirect(route('home'));
     })->name('2fa');
 });
-  
+
 Route::get('/complete-registration', [RegisterController::class, 'completeRegistration'])->name('complete.registration');
