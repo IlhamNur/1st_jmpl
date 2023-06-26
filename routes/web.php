@@ -20,16 +20,20 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/home', [BukutamuCRUDController::class, 'index'])->name('home');
+
 Route::resource('bukutamus', BukutamuCRUDController::class);
 
-Auth::routes(['verify' => true]);
+Auth::routes();
 
-Route::middleware(['2fa'])->group(function () {
+// Auth::routes(['verify' => true]);
 
-    Route::get('/home', [BukutamuCRUDController::class, 'index'])->name('home');
-    Route::post('/2fa', function () {
-        return redirect(route('home'));
-    })->name('2fa');
-});
+// Route::middleware(['2fa'])->group(function () {
 
-Route::get('/complete-registration', [RegisterController::class, 'completeRegistration'])->name('complete.registration');
+//     Route::get('/home', [BukutamuCRUDController::class, 'index'])->name('home');
+//     Route::post('/2fa', function () {
+//         return redirect(route('home'));
+//     })->name('2fa');
+// });
+
+// Route::get('/complete-registration', [RegisterController::class, 'completeRegistration'])->name('complete.registration');

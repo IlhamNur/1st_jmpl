@@ -45,8 +45,8 @@ class User extends Authenticatable implements MustVerifyEmail
         'email_verified_at' => 'datetime',
     ];
 
-    
-    /** 
+
+    /**
      * Interact with the user's first name.
      *
      * @param  string  $value

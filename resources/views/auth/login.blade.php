@@ -9,7 +9,7 @@
 
                 <div class="card-body">
                     <form method="POST" action="{{ route('login') }}">
-                        @csrf
+                        {{-- @csrf --}}
 
                         <div class="row mb-3">
                             <label for="email" class="col-md-4 col-form-label text-md-end">{{ __('Email Address') }}</label>
@@ -38,8 +38,8 @@
                                 @enderror
                             </div>
                         </div>
-                        
-                        @if (session('show_captcha'))
+
+                        {{-- @if (session('show_captcha'))
                             <div class="form-group{{ $errors->has('CaptchaCode') ? ' has-error' : '' }} row mb-3">
                                 <label for="CaptchaCode" class="col-md-4 col-form-label text-md-end">Captcha</label>
 
@@ -56,7 +56,7 @@
                                     @endif
                                 </div>
                             </div>
-                        @endif
+                        @endif --}}
 
                         <div class="row mb-3">
                             <div class="col-md-6 offset-md-4">
